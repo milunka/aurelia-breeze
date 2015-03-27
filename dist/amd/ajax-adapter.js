@@ -39,7 +39,7 @@ define(["exports", "breeze"], function (exports, _breeze) {
       },
       ajax: {
         value: function ajax(config) {
-          var requestInfo, header, method;
+          var requestInfo, header, method, methodName;
 
           requestInfo = {
             adapter: this,
@@ -71,8 +71,9 @@ define(["exports", "breeze"], function (exports, _breeze) {
           }
 
           method = config.dataType && config.dataType.toLowerCase() === "jsonp" ? "jsonp" : config.type.toLowerCase();
+          methodName = "as" + method.charAt(0).toUpperCase() + method.slice(1);
 
-          config.request.asGet().withUri(config.url).withContent(config.data).send().then(function (r) {
+          config.request[methodName]().withUri(config.url).withContent(config.data).send().then(function (r) {
             return requestInfo.success(new HttpResponse(r, requestInfo.zConfig));
           }, function (r) {
             return requestInfo.error(new HttpResponse(r, requestInfo.zConfig));

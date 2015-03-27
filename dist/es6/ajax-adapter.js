@@ -20,7 +20,7 @@ export class AjaxAdapter {
   initialize() {}
 
   ajax(config) {
-    var requestInfo, header, method;
+    var requestInfo, header, method, methodName;
 
     // build the request info object.
     requestInfo = {
@@ -56,9 +56,10 @@ export class AjaxAdapter {
 
     // determine which request method to use.
     method = config.dataType && config.dataType.toLowerCase() === 'jsonp' ? 'jsonp' : config.type.toLowerCase();
-
+    methodName = 'as' + method.charAt(0).toUpperCase() + method.slice(1);
+    
     // send the request.
-    config.request.asGet().withUri(config.url).withContent(config.data).send()
+    config.request[methodName]().withUri(config.url).withContent(config.data).send()
       .then(
         r => requestInfo.success(new HttpResponse(r, requestInfo.zConfig)),
         r => requestInfo.error(new HttpResponse(r, requestInfo.zConfig))
