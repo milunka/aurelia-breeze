@@ -47,7 +47,7 @@ var AjaxAdapter = exports.AjaxAdapter = (function () {
           success: config.success,
           error: config.error
         };
-        requestInfo.config.request = this.httpClient.request;
+        requestInfo.config.request = this.httpClient.createRequest();
         requestInfo.config.headers = clone(this.defaultHeaders || {});
 
         if (breeze.core.isFunction(this.requestInterceptor)) {
@@ -71,7 +71,7 @@ var AjaxAdapter = exports.AjaxAdapter = (function () {
 
         method = config.dataType && config.dataType.toLowerCase() === "jsonp" ? "jsonp" : config.type.toLowerCase();
 
-        config.request[method](config.url, config.data).then(function (r) {
+        config.request.asGet().withUri(config.url).withContent(config.data).send().then(function (r) {
           return requestInfo.success(new HttpResponse(r, requestInfo.zConfig));
         }, function (r) {
           return requestInfo.error(new HttpResponse(r, requestInfo.zConfig));

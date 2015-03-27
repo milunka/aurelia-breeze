@@ -30,7 +30,7 @@ export class AjaxAdapter {
       success: config.success,
       error: config.error
     };
-    requestInfo.config.request = this.httpClient.request;
+    requestInfo.config.request = this.httpClient.createRequest();
     requestInfo.config.headers = clone(this.defaultHeaders || {});
 
     // submit the request-info for interception.
@@ -58,7 +58,7 @@ export class AjaxAdapter {
     method = config.dataType && config.dataType.toLowerCase() === 'jsonp' ? 'jsonp' : config.type.toLowerCase();
 
     // send the request.
-    config.request[method](config.url, config.data)
+    config.request.asGet().withUri(config.url).withContent(config.data).send()
       .then(
         r => requestInfo.success(new HttpResponse(r, requestInfo.zConfig)),
         r => requestInfo.error(new HttpResponse(r, requestInfo.zConfig))
