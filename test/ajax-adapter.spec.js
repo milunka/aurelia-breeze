@@ -6,12 +6,15 @@ import initMetadata from './metadata';
 describe('ajax adapter', function() {
   var adapter;
 
-  beforeAll(() => {
-    setHttpClientFactory(() => new HttpClient());
-    initMetadata(this);
-  });
+//  beforeAll(() => {
+//    setHttpClientFactory(() => new HttpClient());
+//    initMetadata(this);
+//  });
 
   beforeEach(() => {
+    setHttpClientFactory(() => new HttpClient());
+    initMetadata(this);
+
     adapter = new AjaxAdapter();
     adapter.defaultHeaders = {
       Authorization: 'bearer token'

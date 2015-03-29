@@ -3,11 +3,13 @@ import breeze from 'breeze';
 import initMetadata from './metadata';
 
 describe('breeze observation adapter', function() {
-  beforeAll(() => {
-    initMetadata(this);
-  });
+//  beforeAll(() => {
+//  initMetadata(this);
+//  });
 
   beforeEach(() => {
+    initMetadata(this);
+
     this.entityManager.clear();
   });
 
