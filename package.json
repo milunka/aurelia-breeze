@@ -25,9 +25,13 @@
       "lib": "dist/system"
     },
     "dependencies": {
-      "aurelia-binding": "github:aurelia/binding@^0.4.0",
-      "aurelia-http-client": "github:aurelia/http-client@^0.6.1",
+      "aurelia-binding": "github:aurelia/binding@^0.5.0",
+      "aurelia-http-client": "github:aurelia/http-client@^0.7.0",
       "breeze": "npm:breeze-client@^1.5.4"
+    },
+    "devDependencies": {
+      "traceur": "github:jmcriffey/bower-traceur@0.0.87",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87"
     }
   },
   "devDependencies": {
