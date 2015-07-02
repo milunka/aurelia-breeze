@@ -1,4 +1,6 @@
 System.register(['breeze', './promise-adapter', 'aurelia-binding', './observation-adapter', 'aurelia-http-client', './ajax-adapter'], function (_export) {
+  'use strict';
+
   var breeze, Q, ObjectObservationAdapter, BreezeObservationAdapter, HttpClient;
 
   _export('configure', configure);
@@ -28,8 +30,6 @@ System.register(['breeze', './promise-adapter', 'aurelia-binding', './observatio
     }, function (_aureliaHttpClient) {
       HttpClient = _aureliaHttpClient.HttpClient;
     }, function (_ajaxAdapter) {}],
-    execute: function () {
-      'use strict';
-    }
+    execute: function () {}
   };
 });
