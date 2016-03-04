@@ -41,7 +41,6 @@ System.register(['breeze'], function (_export) {
           _classCallCheck(this, AjaxAdapter);
 
           this.name = 'aurelia';
-          this.defaultHeaders;
           this.requestInterceptor = null;
         }
 
@@ -60,7 +59,7 @@ System.register(['breeze'], function (_export) {
             error: config.error
           };
           requestInfo.config.request = this.httpClient.createRequest();
-          requestInfo.config.headers = extend(extend({}, this.defaultHeaders), config.headers);
+          requestInfo.config.headers = extend({}, config.headers);
 
           if (breeze.core.isFunction(this.requestInterceptor)) {
             this.requestInterceptor(requestInfo);

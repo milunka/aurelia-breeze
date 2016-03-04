@@ -41,7 +41,6 @@ var AjaxAdapter = (function () {
     _classCallCheck(this, AjaxAdapter);
 
     this.name = 'aurelia';
-    this.defaultHeaders;
     this.requestInterceptor = null;
   }
 
@@ -60,7 +59,7 @@ var AjaxAdapter = (function () {
       error: config.error
     };
     requestInfo.config.request = this.httpClient.createRequest();
-    requestInfo.config.headers = extend(extend({}, this.defaultHeaders), config.headers);
+    requestInfo.config.headers = extend({}, config.headers);
 
     if (_breeze2['default'].core.isFunction(this.requestInterceptor)) {
       this.requestInterceptor(requestInfo);
